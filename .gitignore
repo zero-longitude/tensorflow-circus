@@ -1,0 +1,58 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# --- uv / virtual environments ---
+.venv/
+venv/
+# NOTE: do NOT ignore uv.lock — commit it for reproducible environments.
+
+# --- Data (each project recreates its own via src/download.py) ---
+data/
+*/data/
+*.csv
+*.tsv
+*.parquet
+*.feather
+*.h5
+*.hdf5
+# Keep small fixture/sample files by force-adding them: `git add -f path/to/sample.csv`
+
+# --- Models / checkpoints / large artifacts ---
+*.ckpt
+*.pt
+*.pth
+*.onnx
+*.safetensors
+*.pkl
+*.joblib
+results/**/*.png   # regenerate plots from code; comment out if you want to track them
+results/**/*.npy
+
+# --- Notebooks ---
+.ipynb_checkpoints/
+# Optional: strip notebook output before committing (nbstripout) to keep diffs clean.
+
+# --- Secrets / config ---
+.env
+.env.*
+*.key
+secrets.*
+
+# --- Editors / OS ---
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# --- Caches ---
+.ruff_cache/
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/

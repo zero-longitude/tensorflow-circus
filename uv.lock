@@ -2,6 +2,29 @@ version = 1
 revision = 3
 requires-python = ">=3.13"
 
+[manifest]
+members = [
+    "01-regression-from-scratch",
+    "tensorflow-circus",
+]
+
+[[package]]
+name = "01-regression-from-scratch"
+version = "0.1.0"
+source = { virtual = "01-regression-from-scratch" }
+dependencies = [
+    { name = "matplotlib" },
+    { name = "numpy" },
+    { name = "scikit-learn" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "matplotlib", specifier = ">=3.11.0" },
+    { name = "numpy", specifier = ">=2.5.0" },
+    { name = "scikit-learn", specifier = ">=1.9.0" },
+]
+
 [[package]]
 name = "contourpy"
 version = "1.3.3"
