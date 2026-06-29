@@ -1,0 +1,48 @@
+% ============================================================================
+%  01-regression-from-scratch — writeup
+%  Compile:  pdflatex writeup.tex   (run twice so \ref/\label resolve)
+%  Or just paste into Overleaf. No special packages, no shell-escape needed.
+% ============================================================================
+\documentclass[11pt]{article}
+
+% --- the only packages you need ---------------------------------------------
+\usepackage[margin=1in]{geometry}   % sane margins
+\usepackage{amsmath,amssymb}        % math
+\usepackage{graphicx}               % \includegraphics for your figures
+\usepackage{hyperref}               % clickable refs/links (optional; delete if you want)
+
+% --- a few tiny convenience macros (delete any you don't use) ---------------
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\X}{\mathbf{X}}         % design matrix
+\newcommand{\y}{\mathbf{y}}         % target vector
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\title{Linear Regression from Scratch:\\ Inference vs.\ Prediction}
+\author{Kavi Mookherjee Amodt}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Inferential vs predictive notions of the same statistical process: linear regression. 
+\end{abstract}
+
+% ============================================================================
+\section{The two cultures: inference vs prediction}\label{sec:cultures}
+
+
+\section{Linear regression is just projecting onto span(X)}\label{sec:projection}
+
+\section{Gradient descent for OLS}\label{sec:GD}
+
+\section{OLS is MLE under Gaussian noise}\label{sec:MLE}
+
+\section{Logistic regression doesn't have closed form}\label{sec:logistic}
+
+\section{Regularizing is biasing on purpose}\label{sec:regularizing}
+
+
+
+\end{document}
