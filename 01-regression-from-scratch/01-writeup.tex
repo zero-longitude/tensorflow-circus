@@ -18,7 +18,7 @@
 \newcommand{\y}{\mathbf{y}}         % target vector
 \DeclareMathOperator*{\argmin}{arg\,min}
 
-\title{Linear Regression from Scratch:\\ Inference vs.\ Prediction}
+\title{Machine Learning Regression for the Econometrics Student}
 \author{Kavi Mookherjee Amodt}
 \date{\today}
 
@@ -30,8 +30,24 @@ Inferential vs predictive notions of the same statistical process: linear regres
 \end{abstract}
 
 % ============================================================================
-\section{The two cultures: inference vs prediction}\label{sec:cultures}
+\section{Inference vs prediction in statistics}\label{sec:cultures}
+    \subsection{In econometrics we infer}
+        \begin{itemize}
+            \item In econometrics, regression is the engine of \textbf{inference}.
+            \item Inference, in this sense, means we use existing data to infer the \textit{relationship} between some variables (e.g. $x$ = income and $y$ = SAT score).
+            \item To be more precise, this relationship is a statistical distribution. Our goal is to model that distribution. 
+            \item When we do regression, we assume that there's a \textit{true} distribution; a \textbf{data generating process}.
+            \item When we do linear regression, we assume that true data generating process looks like a multivariate linear equation: \[y = X\beta + \epsilon\]
+            \item Our \textbf{object of interest} is the vector of weights: $\beta$
+            \item Put differently, $\beta$ is the vector of true relationships between our variables. 
+        \end{itemize} 
 
+    \subsection{Econometricians care about (a) error and (b) bias}
+
+    \subsection{In ML we predict}
+        \begin{itemize}
+            \item In machine learning, our 
+        \end{itemize}
 
 \section{Linear regression is just projecting onto span(X)}\label{sec:projection}
 
