@@ -18,7 +18,7 @@
 \newcommand{\y}{\mathbf{y}}         % target vector
 \DeclareMathOperator*{\argmin}{arg\,min}
 
-\title{Machine Learning Regression for the Econometrics Student}
+\title{Econometrics Student Experiences the Machine Learning Framing of Regression, For Once in His Life}
 \author{Kavi Mookherjee Amodt}
 \date{\today}
 
@@ -37,16 +37,24 @@ Inferential vs predictive notions of the same statistical process: linear regres
             \item Inference, in this sense, means we use existing data to infer the \textit{relationship} between some variables (e.g. $x$ = income and $y$ = SAT score).
             \item To be more precise, this relationship is a statistical distribution. Our goal is to model that distribution. 
             \item When we do regression, we assume that there's a \textit{true} distribution; a \textbf{data generating process}.
-            \item When we do linear regression, we assume that true data generating process looks like a multivariate linear equation: \[y = X\beta + \epsilon\]
+            \item When we do linear regression, we assume that the true data generating process looks like a multivariate linear equation: \[y = X\beta + \epsilon\]
             \item Our \textbf{object of interest} is the vector of weights: $\beta$
-            \item Put differently, $\beta$ is the vector of true relationships between our variables. 
+            \item Put differently, $\beta$ is the vector of true relationships between our variables. $\epsilon$ is the noise.
+            \item Our goal is to estimate the weights of the vector $\beta$ which lead to the most accurate predictions for $y$: \[\hat{y} = X\hat{\beta}\]
         \end{itemize} 
-
-    \subsection{Econometricians care about (a) error and (b) bias}
 
     \subsection{In ML we predict}
         \begin{itemize}
-            \item In machine learning, our 
+            \item In machine learning, our primary goal is not to obtain and report a relationship (like $\beta$), but rather to use data from the world to \textit{make more data}.
+            \item In other words, we take a complex set of causal relationships out there in the world—samples from a data generating process—and use it to \textbf{predict} what that process would output.
+            \item LLMs don't explicitly mimick the causal process in your brain which leads to language (emotional disregulation, excitement, boredom, etc); they find complex statistical \textit{relationships} between tokens (samples from the process) and predict what the process would output (the next word).
+            \item Thus, our object of interest is not $\beta$, but $y$. 
+            \item Instead of focusing on obtaining and reporting $\hat{\beta}$, we do so for $\hat{y}$.
+        \end{itemize}
+
+    \subsection{Throw $\epsilon$ out the window (for now)}
+        \begin{itemize}
+            \item FINISH THIS
         \end{itemize}
 
 \section{Linear regression is just projecting onto span(X)}\label{sec:projection}
