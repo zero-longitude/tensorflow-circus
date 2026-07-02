@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.12)  30 JUN 2026 10:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.12)  1 JUL 2026 16:59
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -326,37 +326,37 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 {/usr/local/texlive/2026basic/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 55.
+(hyperref)                removing `math shift' on input line 62.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\epsilon' on input line 55.
+(hyperref)                removing `\epsilon' on input line 62.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 55.
+(hyperref)                removing `math shift' on input line 62.
 
-[2] (./01-writeup.aux)
+[2] [3] (./01-writeup.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
 Package rerunfilecheck Info: File `01-writeup.out' has not changed.
-(rerunfilecheck)             Checksum: 3A8B6CA9AB25C07E7C5DC3BD6F5E7C6F;2008.
+(rerunfilecheck)             Checksum: AE23BD02C92BF89B37496C370EB5EC8E;2764.
  ) 
 Here is how much of TeX's memory you used:
- 10142 strings out of 469006
- 153907 string characters out of 5454813
- 572284 words of memory out of 5000000
- 38720 multiletter control sequences out of 15000+600000
- 636428 words of font info for 72 fonts, out of 8000000 for 9000
+ 10173 strings out of 469006
+ 154298 string characters out of 5454813
+ 573290 words of memory out of 5000000
+ 38735 multiletter control sequences out of 15000+600000
+ 639189 words of font info for 81 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
- 75i,6n,79p,431b,520s stack positions out of 10000i,1000n,20000p,200000b,200000s
- </Users/kavimookherjeeamodt/Library/texlive/2026basic/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on 01-writeup.pdf (2 pages, 108410 bytes).
+ 75i,7n,79p,494b,525s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ </Users/kavimookherjeeamodt/Library/texlive/2026basic/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2026basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on 01-writeup.pdf (3 pages, 173347 bytes).
 PDF statistics:
- 101 PDF objects out of 1000 (max. 8388607)
- 79 compressed objects within 1 object stream
- 12 named destinations out of 1000 (max. 500000)
- 73 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 157 PDF objects out of 1000 (max. 8388607)
+ 121 compressed objects within 2 object streams
+ 20 named destinations out of 1000 (max. 500000)
+ 105 words of extra memory for PDF output out of 10000 (max. 10000000)
 

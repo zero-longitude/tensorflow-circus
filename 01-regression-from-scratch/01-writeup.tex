@@ -26,10 +26,17 @@
 \maketitle
 
 \begin{abstract}
-Inferential vs predictive notions of the same statistical process: linear regression. 
+Here I will do two things: (A) I will explain the machine learning framing of regression 
+to someone who knows regression only as it is framed in econometrics (or in social sciences more generally), 
+and (B), I will show how I implemented linear regression, logistic regression, and normalization 
+entirely from scratch in Python. I write almost entirely in bullet points because that's how I like to learn. Each bullet deepens understanding; all of them can be seen as having approximately equal semantic weight, so that you don't have to decide whether what you are reading is fluff or not; and you can pace yourself metronomically, it being easy to return to your last checkpoint of understanding. 
 \end{abstract}
 
+\vspace{0.5cm}
+
 % ============================================================================
+{\huge Part (A): Regression in ML and in the Social Sciences}
+
 \section{Inference vs prediction in statistics}\label{sec:cultures}
     \subsection{In econometrics we infer}
         \begin{itemize}
@@ -37,19 +44,19 @@ Inferential vs predictive notions of the same statistical process: linear regres
             \item Inference, in this sense, means we use existing data to infer the \textit{relationship} between some variables (e.g. $x$ = income and $y$ = SAT score).
             \item To be more precise, this relationship is a statistical distribution. Our goal is to model that distribution. 
             \item When we do regression, we assume that there's a \textit{true} distribution; a \textbf{data generating process}.
-            \item When we do linear regression, we assume that the true data generating process looks like a multivariate linear equation: \[y = X\beta + \epsilon\]
-            \item Our \textbf{object of interest} is the vector of weights: $\beta$
-            \item Put differently, $\beta$ is the vector of true relationships between our variables. $\epsilon$ is the noise.
-            \item Our goal is to estimate the weights of the vector $\beta$ which lead to the most accurate predictions for $y$: \[\hat{y} = X\hat{\beta}\]
+            \item When we do linear regression, we assume that the true data generating process looks like a (multivariate) linear equation: \[y = X\beta + \epsilon\]
+            \item Our \textbf{object of interest} is the vector of weights: $\beta$.
+            \item Put differently, $\beta$ is the vector of true relationships between our variables. $\epsilon$ is the noise (more on this later).
+            \item Our goal is to create an estimate of the coefficient vector $\beta$—that estimate is denoted $\hat{\beta}$—which comes closest, when multiplied by the \textbf{design matrix} $X$, to the data for $y$: \[\hat{y} = X\hat{\beta}\]
         \end{itemize} 
 
     \subsection{In ML we predict}
         \begin{itemize}
-            \item In machine learning, our primary goal is not to obtain and report a relationship (like $\beta$), but rather to use data from the world to \textit{make more data}.
-            \item In other words, we take a complex set of causal relationships out there in the world—samples from a data generating process—and use it to \textbf{predict} what that process would output.
-            \item LLMs don't explicitly mimick the causal process in your brain which leads to language (emotional disregulation, excitement, boredom, etc); they find complex statistical \textit{relationships} between tokens (samples from the process) and predict what the process would output (the next word).
+            \item In machine learning, our primary goal is not to obtain and report a relationship (like $\hat{\beta}$), but rather to use data from the world to \textit{make more data}.
+            \item In other words, we take a complex set of causal relationships out there in the world—a set of samples from a data generating process—and use it to \textbf{predict} what that process would output.
+            \item An LLM doesn't explicitly mimick the causal process in your brain which leads to language (emotional disregulation, excitement, boredom, etc); it finds complex statistical \textit{relationships} between tokens (samples from the process) and predicts what the causal process in your brain would output (the next word).
             \item Thus, our object of interest is not $\beta$, but $y$. 
-            \item Instead of focusing on obtaining and reporting $\hat{\beta}$, we do so for $\hat{y}$.
+            \item Instead of focusing on obtaining and reporting $\hat{\beta}$, we try to make a prediction: $\hat{y}$.
         \end{itemize}
 
     \subsection{Throw $\epsilon$ out the window (for now)}
@@ -58,14 +65,53 @@ Inferential vs predictive notions of the same statistical process: linear regres
         \end{itemize}
 
 \section{Linear regression is just projecting onto span(X)}\label{sec:projection}
+    \subsection{Gradient of the squared-error loss function}
+        \begin{itemize}
+            \item Notice how, in the ML framing, there is no notion of probability. It's just pure optimization of this loss function: \[L(\beta) = \frac{1}{n}||y - X\beta||^2\]
+            \item Remember that $||v|| = v^Tv$ and $(A - B)^T = A^T - B^T$
+            \item Therefore, in matrix form: $$L(\beta) \quad = \quad (y - X\beta)^T(y - X\beta) \quad = \quad y^Ty - 2\beta^TX^Ty + \beta^TX^TX\beta$$
+            \item Thus, setting $\nabla L = 0 \implies -2X^Ty + 2X^TX\beta = 0 \implies \boldsymbol{\hat{\beta}} \; \mathbf{ = (X^TX)^{-1}X^Ty}$    
+            \item This result is called the \textbf{normal} equation; we use this to compute our estimate of the relationship vector $\hat{\beta}$.
+            \item Crucially, this is the \textit{closed-form} way to compute $\hat{\beta}$ for linear regression—we don't have such a luxury in logisitic regression.          
+        \end{itemize}
+
+    \subsection{H, the Hat matrix}
+        \begin{itemize}
+            \item Plugging our normal equation for $\hat{\beta}$ back into the equation for our $\hat{y}$ prediction: \[\hat{y} = X\beta \quad = \quad X(X^TX)^{-1}X^Ty \quad = \quad \mathbf{H}y\]
+            \item $\mathbf{H}$ is the Hat matrix of $X$: multiplying a vector $y$ by the Hat matrix of $X$ gives you the \textbf{orthogonal projection} of $y$ onto $X$.
+            \item That's all OLS is: our estimator for $y$ is the point in span($X$) which is closest, in terms of Euclidean distance, to $y$. 
+            \item That mechanic right there—finding the closest point in representable space to our datapoint—is one you will see throughout linear-algebraic machine learning: in QR decomposition, principal components analysis, support vector machines.
+        \end{itemize}
 
 \section{Gradient descent for OLS}\label{sec:GD}
+    \subsection{Why use gradient descent?}
+        \begin{itemize}
+            \item If we have a closed-form way to compute our coefficients, why is gradient descent considered the \textit{sledgehammer} of modern ML?
+            \item Unsurprisingly, the answer is efficiency: computing $X^TX$ is $O(p^3)$ where $p$ is the number of predictors.
+            \item We thus use GD in both ML and econometric settings.
+        \end{itemize}
+
+    \subsection{How GD works}
+        \begin{itemize}
+            \item The gradient of a continuous, multivariate function (in this case, our loss function $L$) is a vector which points in the direction of \textbf{steepest ascent}.
+            \item As we saw earlier, it is denoted $\nabla L$. Its magnitude $||\nabla L||$ equals the slope of L in that direction. 
+            \item GD is a process:
+                \begin{enumerate}
+                    \item Find $\nabla L$ at the point on the ``surface" of the function L where you stand now. 
+                    \item The vector $\hat{\beta} \leftarrow \hat{\beta} - \mu\nabla L$.
+                    \item Travel to the t
+                \end{enumerate}
+        \end{itemize}
 
 \section{OLS is MLE under Gaussian noise}\label{sec:MLE}
 
 \section{Logistic regression doesn't have closed form}\label{sec:logistic}
 
 \section{Regularizing is biasing on purpose}\label{sec:regularizing}
+
+\vspace{0.5cm}
+
+{\huge Part (B): Implementation Details}
 
 
 
